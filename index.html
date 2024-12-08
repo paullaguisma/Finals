@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: #060606;
+            color: white;
+            font-family: 'oswald';
+        }
+
+        .image-container{
+            display: flex;
+            height: 100%;
+            right: 0;
+            justify-content: right;
+        }
+        .image-container img {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            height: 100%;
+            
+        }
+
+        .image-container img.visible {
+            opacity: 1; /* Fully visible when the class is applied */
+            right: 0;
+        }
+        .hover-target{
+            width: fit-content;
+            height: fit-content;
+            margin-left: 10%;
+        }
+        .hover-target a{
+            font-weight: 500;
+            color: white;
+            font-size: 70px;
+            transition: 0.6s;
+        }
+        .hover-target a:hover{
+            opacity: 1;
+            color: #9a0e16;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row" style="margin: 0;">
+        <div class="col s5">
+            <div class="row" style="margin: 0; height: 25vh;">
+                <div class="logo-container" style="height: 100%; margin-left: 10%; display: flex; align-items: center;">
+                    <img src="finals-resources/6.png" alt="" style="height: 60%;" >
+                </div> 
+            </div>
+
+            <div class="row" style="margin: 0; height: 15vh">
+                <div class="hover-target" data-image="finals-resources/1.png">
+                    <a href="about.html">ABOUT</a>
+                </div>
+            </div>
+
+            <div class="row" style="margin: 0; height: 15vh">
+                <div class="hover-target" data-image="finals-resources/2.png"">
+                    <a href="chars.html">CHARACTERS</a>
+                </div>
+            </div>
+            
+            <div class="row" style="margin: 0; height: 15vh">
+                <div class="hover-target" data-image="finals-resources/3.png"">
+                    <a  href="news.html">NEWS</a>
+                </div>
+            </div>
+
+            <div class="row" style="margin: 0; height: 15vh">
+                <div class="hover-target" data-image="finals-resources/4.png"">
+                    <a href="merch.html">MERCH</a>
+                </div>
+            </div>
+
+            <div class="row" style="margin-left: 10%; height: 15vh; color: #9a0e16; display: flex; align-items: center;">
+                A Website designed by paul laguisma
+            </div>
+        </div>
+        <div class="col s7">
+            <div class="row" style="margin: 0; height: 0vh;"></div>
+
+            <!-- Interactive Image -->
+            <div class="row hide-on-small-only" style="margin: 0; height: 100vh;">
+                <div class="image-container">
+                    <img id="hoverImage" src="finals-resources/logo.png" alt="Default Image" class="visible">
+                </div>
+            </div>
+        </div>
+    
+    </div> 
+
+
+
+    <script>
+        const hoverTargets = document.querySelectorAll('.hover-target');
+        const hoverImage = document.getElementById('hoverImage');
+    
+        hoverTargets.forEach(target => {
+          target.addEventListener('mouseenter', () => {
+            // Fade out
+            hoverImage.classList.remove('visible');
+    
+            // Wait for fade-out
+            setTimeout(() => {
+              hoverImage.src = target.getAttribute('data-image'); // Update
+              hoverImage.classList.add('visible'); // Fade in
+            }, 500); // Match the transition
+          });
+    
+          target.addEventListener('mouseleave', () => {
+            // Fade out
+            hoverImage.classList.remove('visible');
+    
+            // Wait for fade-out
+            setTimeout(() => {
+              hoverImage.src = 'finals-resources/logo.png';
+              hoverImage.classList.add('visible');
+            }, 500);
+          });
+        });
+      </script>
+</body>
+</html>
